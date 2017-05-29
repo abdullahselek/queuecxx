@@ -5,4 +5,18 @@
 #ifndef QUEUECXX_QUEUECXX_H
 #define QUEUECXX_QUEUECXX_H
 
+#include <vector>
+
+class Queue {
+
+public:
+    Queue();
+    ~Queue();
+    std::vector<int> getAllItems();
+
+private:
+    std::vector<int> items;
+
+};
+
 #endif //QUEUECXX_QUEUECXX_H
