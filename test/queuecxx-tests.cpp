@@ -24,7 +24,7 @@ protected:
     virtual void TearDown() {
         // Code here will be called immediately after each test (right
         // before the destructor).
-        delete  queue;
+        delete queue;
     }
 
 public:
@@ -38,6 +38,14 @@ public:
 TEST_F(QueueTests, Initiate) {
     EXPECT_TRUE(queue != nullptr);
     EXPECT_EQ(queue->getAllItems().size(), 0);
+}
+
+TEST_F(QueueTests, IsEmpty) {
+    EXPECT_TRUE(queue->isEmpty());
+}
+
+TEST_F(QueueTests, Size) {
+    EXPECT_EQ(queue->size(), 0);
 }
 
 int main(int argc, char **argv) {

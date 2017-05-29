@@ -13,6 +13,8 @@ public:
     Queue();
     ~Queue();
     std::vector<int> getAllItems();
+    bool isEmpty();
+    int size();
 
 private:
     std::vector<int> items;

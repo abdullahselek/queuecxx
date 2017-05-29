@@ -15,3 +15,11 @@ Queue::~Queue() {
 std::vector<int> Queue::getAllItems() {
     return this->items;
 }
+
+bool Queue::isEmpty() {
+    return this->items.size() == 0;
+};
+
+int Queue::size() {
+    return this->items.size();
+};
