@@ -4,22 +4,22 @@
 
 #include "../include/queuecxx.h"
 
-Queue::Queue() {
-
+Queue::Queue(int maxSize) {
+    this->items = new int[maxSize];
 }
 
 Queue::~Queue() {
 
 }
 
-std::vector<int> Queue::getAllItems() {
+int * Queue::getAllItems() {
     return this->items;
 }
 
 bool Queue::isEmpty() {
-    return this->items.size() == 0;
+    return this->itemCount == 0;
 };
 
 int Queue::size() {
-    return this->items.size();
+    return this->itemCount;
 };

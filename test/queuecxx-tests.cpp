@@ -18,7 +18,7 @@ protected:
     virtual void SetUp() {
         // Code here will be called immediately after the constructor (right
         // before each test).
-        queue = new Queue();
+        queue = new Queue(10);
     }
 
     virtual void TearDown() {
@@ -29,7 +29,7 @@ protected:
 
 public:
     QueueTests() {
-        this->queue = new Queue();
+        this->queue = new Queue(10);
     }
 
     Queue *queue;
@@ -37,7 +37,7 @@ public:
 
 TEST_F(QueueTests, Initiate) {
     EXPECT_TRUE(queue != nullptr);
-    EXPECT_EQ(queue->getAllItems().size(), 0);
+    EXPECT_EQ(queue->size(), 0);
 }
 
 TEST_F(QueueTests, IsEmpty) {

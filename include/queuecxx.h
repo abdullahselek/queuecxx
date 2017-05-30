@@ -10,14 +10,17 @@
 class Queue {
 
 public:
-    Queue();
+    Queue(int maxSize);
     ~Queue();
-    std::vector<int> getAllItems();
+    int * getAllItems();
     bool isEmpty();
     int size();
 
 private:
-    std::vector<int> items;
+    int * items = nullptr;
+    int front = 0;
+    int rear = -1;
+    int itemCount = 0;
 
 };
 
