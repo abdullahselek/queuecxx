@@ -39,3 +39,14 @@ void Queue::insert(int data) {
     items[rear++] = data;
     itemCount++;
 }
+
+int Queue::removeData(int data) {
+    if (!isEmpty()) {
+        int data = this->items[front++];
+        if (front == this->maxSize) {
+            front = 0;
+        }
+        itemCount--;
+        return data;
+    }
+}

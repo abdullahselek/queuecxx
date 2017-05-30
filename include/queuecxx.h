@@ -17,6 +17,7 @@ public:
     bool isFull();
     int size();
     void insert(int data);
+    int removeData(int data);
 
 private:
     int * items = nullptr;

@@ -59,6 +59,16 @@ TEST_F(QueueTests, InsertData) {
     EXPECT_FALSE(queue->isEmpty());
 }
 
+TEST_F(QueueTests, RemoveData) {
+    queue->insert(1);
+    queue->insert(2);
+    queue->insert(3);
+    EXPECT_EQ(queue->size(), 3);
+    int data = queue->removeData(2);
+    EXPECT_EQ(data, 2);
+    EXPECT_EQ(queue->size(), 2);
+}
+
 int main(int argc, char **argv) {
     ::testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();
