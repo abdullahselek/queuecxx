@@ -6,6 +6,7 @@
 
 Queue::Queue(int maxSize) {
     this->items = new int[maxSize];
+    this->maxSize = maxSize;
 }
 
 Queue::~Queue() {
@@ -20,6 +21,21 @@ bool Queue::isEmpty() {
     return this->itemCount == 0;
 };
 
+bool Queue::isFull() {
+    return this->itemCount == maxSize;
+}
+
 int Queue::size() {
     return this->itemCount;
 };
+
+void Queue::insert(int data) {
+    if (isFull()) {
+        return;
+    }
+    if (rear == this->maxSize - 1) {
+        rear = -1;
+    }
+    items[rear++] = data;
+    itemCount++;
+}

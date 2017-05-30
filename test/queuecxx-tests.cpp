@@ -18,7 +18,7 @@ protected:
     virtual void SetUp() {
         // Code here will be called immediately after the constructor (right
         // before each test).
-        queue = new Queue(10);
+        queue = new Queue(3);
     }
 
     virtual void TearDown() {
@@ -28,10 +28,6 @@ protected:
     }
 
 public:
-    QueueTests() {
-        this->queue = new Queue(10);
-    }
-
     Queue *queue;
 };
 
@@ -42,10 +38,25 @@ TEST_F(QueueTests, Initiate) {
 
 TEST_F(QueueTests, IsEmpty) {
     EXPECT_TRUE(queue->isEmpty());
+    queue->insert(1);
+    EXPECT_FALSE(queue->isEmpty());
+}
+
+TEST_F(QueueTests, IsFull) {
+    EXPECT_FALSE(queue->isFull());
+    queue->insert(1);
+    queue->insert(2);
+    queue->insert(3);
+    EXPECT_TRUE(queue->isFull());
 }
 
 TEST_F(QueueTests, Size) {
     EXPECT_EQ(queue->size(), 0);
+}
+
+TEST_F(QueueTests, InsertData) {
+    queue->insert(1);
+    EXPECT_FALSE(queue->isEmpty());
 }
 
 int main(int argc, char **argv) {
