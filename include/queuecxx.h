@@ -33,10 +33,10 @@ public:
 
 private:
     Item<T> * items = nullptr;
-    int maxSize = 0;
-    int front = 0;
-    int rear = -1;
-    int itemCount = 0;
+    int maxSize;
+    int front;
+    int rear;
+    int itemCount;
 
 };
 
@@ -44,6 +44,9 @@ template <typename T>
 Queue<T>::Queue(int maxSize) {
     this->items = new Item<T>[maxSize];
     this->maxSize = maxSize;
+    this->front = 0;
+    this->rear = -1;
+    this->itemCount = 0;
 }
 
 template <typename T>
