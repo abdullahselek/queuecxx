@@ -18,56 +18,53 @@ protected:
     virtual void SetUp() {
         // Code here will be called immediately after the constructor (right
         // before each test).
-        queue = new Queue<int>(3);
     }
 
     virtual void TearDown() {
         // Code here will be called immediately after each test (right
         // before the destructor).
-        delete queue;
     }
 
 public:
-    Queue<int> *queue;
+    Queue<int> queue{3};
 };
 
 TEST_F(QueueTests, Initiate) {
-    EXPECT_TRUE(queue != nullptr);
-    EXPECT_EQ(queue->size(), 0);
+    EXPECT_EQ(queue.size(), 0);
 }
 
 TEST_F(QueueTests, IsEmpty) {
-    EXPECT_TRUE(queue->isEmpty());
-    queue->insert(1);
-    EXPECT_FALSE(queue->isEmpty());
+    EXPECT_TRUE(queue.isEmpty());
+    queue.insert(1);
+    EXPECT_FALSE(queue.isEmpty());
 }
 
 TEST_F(QueueTests, IsFull) {
-    EXPECT_FALSE(queue->isFull());
-    queue->insert(1);
-    queue->insert(2);
-    queue->insert(3);
-    EXPECT_TRUE(queue->isFull());
+    EXPECT_FALSE(queue.isFull());
+    queue.insert(1);
+    queue.insert(2);
+    queue.insert(3);
+    EXPECT_TRUE(queue.isFull());
 }
 
 TEST_F(QueueTests, Size) {
-    EXPECT_EQ(queue->size(), 0);
+    EXPECT_EQ(queue.size(), 0);
 }
 
 TEST_F(QueueTests, InsertData) {
-    queue->insert(1);
-    EXPECT_FALSE(queue->isEmpty());
+    queue.insert(1);
+    EXPECT_FALSE(queue.isEmpty());
 }
 
 TEST_F(QueueTests, RemoveData) {
     int item = 2;
-    queue->insert(1);
-    queue->insert(item);
-    queue->insert(3);
-    EXPECT_EQ(queue->size(), 3);
-    int removedItem = queue->removeData(item);
+    queue.insert(1);
+    queue.insert(item);
+    queue.insert(3);
+    EXPECT_EQ(queue.size(), 3);
+    int removedItem = queue.removeData(item);
     EXPECT_EQ(removedItem, item);
-    EXPECT_EQ(queue->size(), 2);
+    EXPECT_EQ(queue.size(), 2);
 }
 
 int main(int argc, char **argv) {

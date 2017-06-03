@@ -9,6 +9,7 @@ template <typename T>
 class Queue {
 
 public:
+    Queue();
     Queue(int maxSize);
     ~Queue();
     T * getAllItems();
@@ -26,6 +27,11 @@ private:
     int itemCount;
 
 };
+
+template <typename T>
+Queue<T>::Queue() {
+
+}
 
 template <typename T>
 Queue<T>::Queue(int maxSize) {
