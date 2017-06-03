@@ -38,16 +38,15 @@ TEST_F(QueueTests, Initiate) {
 
 TEST_F(QueueTests, IsEmpty) {
     EXPECT_TRUE(queue->isEmpty());
-    Item<int> item(1);
-    queue->insert(item);
+    queue->insert(1);
     EXPECT_FALSE(queue->isEmpty());
 }
 
 TEST_F(QueueTests, IsFull) {
     EXPECT_FALSE(queue->isFull());
-    queue->insert(Item<int>(1));
-    queue->insert(Item<int>(2));
-    queue->insert(Item<int>(3));
+    queue->insert(1);
+    queue->insert(2);
+    queue->insert(3);
     EXPECT_TRUE(queue->isFull());
 }
 
@@ -56,18 +55,18 @@ TEST_F(QueueTests, Size) {
 }
 
 TEST_F(QueueTests, InsertData) {
-    queue->insert(Item<int>(1));
+    queue->insert(1);
     EXPECT_FALSE(queue->isEmpty());
 }
 
 TEST_F(QueueTests, RemoveData) {
-    Item<int> item(2);
-    queue->insert(Item<int>(1));
+    int item = 2;
+    queue->insert(1);
     queue->insert(item);
-    queue->insert(Item<int>(3));
+    queue->insert(3);
     EXPECT_EQ(queue->size(), 3);
-    Item<int> removedItem = queue->removeData(item);
-    EXPECT_EQ(removedItem.data, 2);
+    int removedItem = queue->removeData(item);
+    EXPECT_EQ(removedItem, item);
     EXPECT_EQ(queue->size(), 2);
 }
 

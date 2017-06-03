@@ -6,33 +6,20 @@
 #define QUEUECXX_QUEUECXX_H
 
 template <typename T>
-struct Item {
-    T data;
-
-    Item() {
-
-    }
-
-    Item<T>(T data) {
-        this->data = data;
-    }
-};
-
-template <typename T>
 class Queue {
 
 public:
     Queue(int maxSize);
     ~Queue();
-    Item<T> * getAllItems();
+    T * getAllItems();
     bool isEmpty();
     bool isFull();
     int size();
-    void insert(Item<T> data);
-    Item<T> removeData(Item<T> data);
+    void insert(T data);
+    T removeData(T data);
 
 private:
-    Item<T> * items = nullptr;
+    T * items = nullptr;
     int maxSize;
     int front;
     int rear;
@@ -42,7 +29,7 @@ private:
 
 template <typename T>
 Queue<T>::Queue(int maxSize) {
-    this->items = new Item<T>[maxSize];
+    this->items = new T[maxSize];
     this->maxSize = maxSize;
     this->front = 0;
     this->rear = -1;
@@ -55,7 +42,7 @@ Queue<T>::~Queue() {
 }
 
 template <typename T>
-Item<T> * Queue<T>::getAllItems() {
+T * Queue<T>::getAllItems() {
     return this->items;
 }
 
@@ -75,7 +62,7 @@ int Queue<T>::size() {
 };
 
 template <typename T>
-void Queue<T>::insert(Item<T> data) {
+void Queue<T>::insert(T data) {
     if (isFull()) {
         return;
     }
@@ -87,16 +74,16 @@ void Queue<T>::insert(Item<T> data) {
 }
 
 template <typename T>
-Item<T> Queue<T>::removeData(Item<T> data) {
+T Queue<T>::removeData(T data) {
     if (!isEmpty()) {
-        Item<T> data = this->items[front++];
+        T data = this->items[front++];
         if (front == this->maxSize) {
             front = 0;
         }
         itemCount--;
         return data;
     }
-    return Item<T>{};
+    return T{};
 }
 
 #endif //QUEUECXX_QUEUECXX_H
