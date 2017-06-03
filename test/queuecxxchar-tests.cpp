@@ -1,14 +1,14 @@
 //
-// Created by Selek, Abdullah on 29.05.17.
+// Created by Selek, Abdullah on 03.06.17.
 //
 
 #include "gtest/gtest.h"
 #include "../include/queuecxx.h"
 
-class QueueTests : public ::testing::Test {
+class QueueCharTests : public ::testing::Test {
 
 protected:
-    virtual ~QueueTests() {
+    virtual ~QueueCharTests() {
         // You can do clean-up work that doesn't throw exceptions here.
     }
 
@@ -26,43 +26,43 @@ protected:
     }
 
 public:
-    Queue<int> queue{3};
+    Queue<char> queue{3};
 };
 
-TEST_F(QueueTests, Initiate) {
+TEST_F(QueueCharTests, Initiate) {
     EXPECT_EQ(queue.size(), 0);
 }
 
-TEST_F(QueueTests, IsEmpty) {
+TEST_F(QueueCharTests, IsEmpty) {
     EXPECT_TRUE(queue.isEmpty());
-    queue.insert(1);
+    queue.insert('a');
     EXPECT_FALSE(queue.isEmpty());
 }
 
-TEST_F(QueueTests, IsFull) {
+TEST_F(QueueCharTests, IsFull) {
     EXPECT_FALSE(queue.isFull());
-    queue.insert(1);
-    queue.insert(2);
-    queue.insert(3);
+    queue.insert('a');
+    queue.insert('b');
+    queue.insert('c');
     EXPECT_TRUE(queue.isFull());
 }
 
-TEST_F(QueueTests, Size) {
+TEST_F(QueueCharTests, Size) {
     EXPECT_EQ(queue.size(), 0);
 }
 
-TEST_F(QueueTests, InsertData) {
-    queue.insert(1);
+TEST_F(QueueCharTests, InsertData) {
+    queue.insert('a');
     EXPECT_FALSE(queue.isEmpty());
 }
 
-TEST_F(QueueTests, RemoveData) {
-    int item = 2;
-    queue.insert(1);
+TEST_F(QueueCharTests, RemoveData) {
+    char item = 'b';
+    queue.insert('a');
     queue.insert(item);
-    queue.insert(3);
+    queue.insert('c');
     EXPECT_EQ(queue.size(), 3);
-    int removedItem = queue.removeData(item);
+    char removedItem = queue.removeData(item);
     EXPECT_EQ(removedItem, item);
     EXPECT_EQ(queue.size(), 2);
 }
