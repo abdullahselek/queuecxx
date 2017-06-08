@@ -9,15 +9,15 @@ template <typename T>
 class Queue {
 
 public:
-    Queue();
-    Queue(int maxSize);
-    ~Queue();
-    T * getAllItems();
-    bool isEmpty();
-    bool isFull();
-    int size();
-    void insert(T data);
-    T removeData(T data);
+    inline Queue();
+    inline Queue(int maxSize);
+    inline ~Queue();
+    inline T * getAllItems();
+    inline bool isEmpty();
+    inline bool isFull();
+    inline int size();
+    inline void insert(T data);
+    inline T removeData(T data);
 
 private:
     T * items = nullptr;
@@ -29,12 +29,12 @@ private:
 };
 
 template <typename T>
-Queue<T>::Queue() {
+inline Queue<T>::Queue() {
 
 }
 
 template <typename T>
-Queue<T>::Queue(int maxSize) {
+inline Queue<T>::Queue(int maxSize) {
     this->items = new T[maxSize];
     this->maxSize = maxSize;
     this->front = 0;
@@ -43,32 +43,32 @@ Queue<T>::Queue(int maxSize) {
 }
 
 template <typename T>
-Queue<T>::~Queue() {
+inline Queue<T>::~Queue() {
     delete this->items;
 }
 
 template <typename T>
-T * Queue<T>::getAllItems() {
+inline T * Queue<T>::getAllItems() {
     return this->items;
 }
 
 template <typename T>
-bool Queue<T>::isEmpty() {
+inline bool Queue<T>::isEmpty() {
     return this->itemCount == 0;
 };
 
 template <typename T>
-bool Queue<T>::isFull() {
+inline bool Queue<T>::isFull() {
     return this->itemCount == maxSize;
 }
 
 template <typename T>
-int Queue<T>::size() {
+inline int Queue<T>::size() {
     return this->itemCount;
 };
 
 template <typename T>
-void Queue<T>::insert(T data) {
+inline void Queue<T>::insert(T data) {
     if (isFull()) {
         return;
     }
@@ -80,7 +80,7 @@ void Queue<T>::insert(T data) {
 }
 
 template <typename T>
-T Queue<T>::removeData(T data) {
+inline T Queue<T>::removeData(T data) {
     if (!isEmpty()) {
         T data = this->items[front++];
         if (front == this->maxSize) {
